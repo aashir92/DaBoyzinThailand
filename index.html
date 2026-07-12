@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Andaman Open-Jaw Loop — Green Season Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -138,7 +138,7 @@
     .hero{padding-top:88px;}
   }
 
-  .bg-photo{position:fixed; inset:-5% -5% -5% -5%; background-size:cover; background-position:center 30%; transform:translateY(calc(var(--scroll-y) * -0.06px)) scale(1.05);}
+  .bg-photo{position:fixed; inset:0; background-size:cover; background-position:center 35%;}
   .bg-photo-overlay{position:fixed; inset:0; background:linear-gradient(180deg, rgba(63,193,233,0.55) 0%, rgba(127,216,224,0.4) 30%, rgba(255,221,122,0.35) 100%);}
   .day-photo{position:relative; height:150px; background-size:cover; background-position:center; overflow:hidden;}
   .day-photo-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,61,62,0.10) 0%, rgba(11,61,62,0.82) 100%);}
@@ -345,11 +345,16 @@
 <script>
   const links = document.querySelectorAll('#daynav a');
   const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  let currentIdx = -1;
   const setActive = () => {
     let idx = 0;
     const y = window.scrollY + 140;
     sections.forEach((s, i) => { if (s && s.offsetTop <= y) idx = i; });
-    links.forEach((l, i) => l.classList.toggle('active', i === idx));
+    if (idx !== currentIdx) {
+      currentIdx = idx;
+      links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      links[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
   };
 
   let ticking = false;
