@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Andaman Open-Jaw Loop — Green Season Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2E2C;
+    --ink-2:#123F3B;
+    --ink-3:#1A4E49;
+    --limestone:#F3EEE0;
+    --limestone-dim:#E4DCC2;
+    --amber:#D9A441;
+    --coral:#E0704A;
+    --sea:#3C93AE;
+    --rain:#7C97A3;
+    --ink-text:#0B2E2C;
+    --line: rgba(243,238,224,0.14);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--limestone);
+    font-family:'Public Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  ::selection{background:var(--amber); color:var(--ink);}
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:11px;
+    color:var(--amber);
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; margin:0; letter-spacing:-0.01em;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:56px 22px 40px;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 15% -10%, rgba(217,164,65,0.18), transparent 55%),
+      radial-gradient(140% 100% at 100% 0%, rgba(60,147,174,0.22), transparent 60%),
+      var(--ink);
+  }
+  .karst{
+    position:absolute; bottom:-2px; left:0; width:100%; opacity:0.5;
+  }
+  .hero-inner{position:relative; z-index:2;}
+  .hero h1{
+    font-size:38px;
+    line-height:1.04;
+    font-weight:600;
+    color:var(--limestone);
+    margin-top:14px;
+  }
+  .hero h1 em{color:var(--amber); font-style:italic; font-weight:500;}
+  .hero-sub{
+    margin-top:14px;
+    font-size:15.5px;
+    line-height:1.55;
+    color:rgba(243,238,224,0.78);
+    max-width:46ch;
+  }
+  .hero-meta{
+    display:flex; gap:18px; margin-top:24px; flex-wrap:wrap;
+  }
+  .meta-chip{
+    font-family:'Space Mono', monospace;
+    font-size:11.5px;
+    color:var(--limestone);
+    border:1px solid var(--line);
+    padding:7px 12px;
+    border-radius:100px;
+    display:flex; align-items:center; gap:6px;
+    background:rgba(243,238,224,0.04);
+  }
+  .meta-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+
+  /* ===== STICKY DAY NAV ===== */
+  .daynav-wrap{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,46,44,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .daynav{
+    display:flex; gap:8px; overflow-x:auto;
+    padding:12px 16px;
+    scrollbar-width:none;
+  }
+  .daynav::-webkit-scrollbar{display:none;}
+  .daynav a{
+    flex:0 0 auto;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    color:rgba(243,238,224,0.55);
+    text-decoration:none;
+    border:1px solid var(--line);
+    padding:7px 13px;
+    border-radius:100px;
+    transition:all .2s ease;
+    white-space:nowrap;
+  }
+  .daynav a.active{
+    color:var(--ink);
+    background:var(--amber);
+    border-color:var(--amber);
+    font-weight:700;
+  }
+
+  /* ===== SECTION WRAPPERS ===== */
+  .wrap{padding:34px 20px;}
+  .section-label{
+    display:flex; align-items:center; gap:10px; margin-bottom:16px;
+  }
+  .section-label .line{flex:1; height:1px; background:var(--line);}
+
+  /* ===== MONSOON NOTE BLOCK ===== */
+  .notice{
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px 18px;
+    margin:0 20px 8px;
+  }
+  .notice h3{font-size:17px; color:var(--limestone); font-weight:600;}
+  .notice p{font-size:14px; line-height:1.6; color:rgba(243,238,224,0.75); margin:10px 0 0;}
+  .notice .tag-row{display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;}
+  .tag{
+    font-family:'Space Mono', monospace; font-size:10.5px;
+    padding:5px 10px; border-radius:100px; letter-spacing:0.02em;
+  }
+  .tag.rain{background:rgba(124,151,163,0.22); color:#C9D6DB;}
+  .tag.win{background:rgba(217,164,65,0.2); color:var(--amber);}
+
+  /* ===== HOTEL SPOTLIGHT ===== */
+  .hotel-card{
+    margin:28px 20px 0;
+    background:var(--limestone);
+    color:var(--ink);
+    border-radius:20px;
+    padding:24px 20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hotel-card::before{
+    content:"";
+    position:absolute; top:0; right:0; width:120px; height:120px;
+    background:radial-gradient(circle, rgba(224,112,74,0.25), transparent 70%);
+  }
+  .hotel-badge{
+    font-family:'Space Mono', monospace; font-size:10.5px;
+    text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--coral); font-weight:700;
+  }
+  .hotel-card h3{font-size:22px; margin-top:8px; color:var(--ink);}
+  .hotel-card .loc{font-size:13px; color:#4A6560; margin-top:4px; font-weight:600;}
+  .hotel-card p{font-size:14px; line-height:1.6; color:#2F4A45; margin-top:10px;}
+  .hotel-alt{
+    margin-top:16px; padding-top:16px; border-top:1px dashed rgba(11,46,44,0.2);
+  }
+  .hotel-alt .label{font-family:'Space Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:#4A6560;}
+  .hotel-alt p{margin-top:6px;}
+
+  /* ===== DAY CARD ===== */
+  .day{
+    scroll-margin-top:70px;
+    margin:40px 20px 0;
+    border-radius:22px;
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .day-head{
+    padding:22px 20px 16px;
+    display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+  }
+  .day-num{
+    font-family:'Space Mono', monospace;
+    font-size:12px; color:var(--amber);
+  }
+  .day-head h2{
+    font-size:23px; color:var(--limestone); margin-top:6px; font-weight:600; line-height:1.15;
+  }
+  .day-badges{display:flex; flex-direction:column; gap:6px; align-items:flex-end;}
+  .badge{
+    font-family:'Space Mono', monospace; font-size:10px;
+    padding:5px 9px; border-radius:8px; white-space:nowrap;
+    display:flex; align-items:center; gap:5px;
+  }
+  .badge.snorkel{background:rgba(60,147,174,0.22); color:#9FD4E5;}
+  .badge.adrenaline{background:rgba(224,112,74,0.2); color:#F0A683;}
+
+  /* monsoon bar */
+  .monsoon-bar{
+    margin:0 20px 18px;
+    display:flex; border-radius:10px; overflow:hidden; height:30px;
+    border:1px solid var(--line);
+  }
+  .monsoon-bar .seg{flex:1; display:flex; align-items:center; justify-content:center;
+    font-family:'Space Mono', monospace; font-size:9.5px; letter-spacing:0.02em; color:var(--ink);}
+  .seg.clear{background:linear-gradient(180deg,#EFCB7A,#D9A441);}
+  .seg.mostly{background:linear-gradient(180deg,#C9D89A,#A9C17E); color:#1D3520;}
+  .seg.rain{background:linear-gradient(180deg,#8FA9B6,#6E8CA0); color:#0B2223;}
+
+  .day-body{padding:0 20px 22px;}
+  .beat{
+    display:flex; gap:14px;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+  }
+  .beat:first-child{border-top:none;}
+  .beat-time{
+    font-family:'Space Mono', monospace;
+    font-size:11px; color:var(--amber);
+    flex:0 0 68px; padding-top:2px;
+  }
+  .beat-text{font-size:14.5px; line-height:1.62; color:rgba(243,238,224,0.86);}
+  .beat-text b{color:var(--limestone); font-weight:600;}
+  .beat-text .venue{color:var(--sea); font-weight:600;}
+
+  details.swap{
+    margin-top:14px;
+    background:rgba(224,112,74,0.08);
+    border:1px solid rgba(224,112,74,0.28);
+    border-radius:12px;
+    padding:12px 14px;
+  }
+  details.swap summary{
+    font-family:'Space Mono', monospace; font-size:11px;
+    color:var(--coral); cursor:pointer; list-style:none;
+    display:flex; align-items:center; gap:8px;
+  }
+  details.swap summary::-webkit-details-marker{display:none;}
+  details.swap summary::before{content:"⇄"; font-size:13px;}
+  details.swap p{font-size:13.5px; line-height:1.6; color:rgba(243,238,224,0.8); margin:10px 0 0;}
+
+  /* ===== SNORKEL MAP SECTION ===== */
+  .snorkel-map{
+    margin:40px 20px 0;
+    background:linear-gradient(160deg, var(--ink-3), var(--ink-2));
+    border-radius:22px; padding:24px 20px;
+    border:1px solid var(--line);
+  }
+  .snorkel-map h2{font-size:22px; color:var(--limestone);}
+  .sm-row{
+    display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line);
+    align-items:flex-start;
+  }
+  .sm-row:first-of-type{border-top:none; padding-top:18px;}
+  .sm-level{
+    flex:0 0 64px; font-family:'Space Mono',monospace; font-size:10px;
+    padding:5px 8px; border-radius:8px; text-align:center; height:fit-content;
+  }
+  .sm-level.high{background:rgba(60,147,174,0.25); color:#9FD4E5;}
+  .sm-level.low{background:rgba(124,151,163,0.2); color:#C9D6DB;}
+  .sm-text{font-size:14px; line-height:1.6; color:rgba(243,238,224,0.82);}
+  .sm-text b{color:var(--limestone);}
+
+  /* ===== CUT LIST ===== */
+  .cutlist{margin:40px 20px 0;}
+  .cutlist h2{font-size:22px; color:var(--limestone); margin-bottom:6px;}
+  .cutlist p.intro{font-size:13.5px; color:rgba(243,238,224,0.65); line-height:1.6;}
+  .cut-item{
+    padding:13px 0; border-top:1px solid var(--line);
+    font-size:13.5px; line-height:1.6; color:rgba(243,238,224,0.78);
+  }
+  .cut-item b{color:var(--limestone); display:block; margin-bottom:3px; font-size:14px;}
+
+  footer{
+    margin:50px 20px 10px; text-align:center;
+    font-family:'Space Mono', monospace; font-size:10.5px;
+    color:rgba(243,238,224,0.35); letter-spacing:0.04em;
+  }
+
+  @media(min-width:720px){
+    .wrap, .hero{max-width:640px; margin:0 auto;}
+    .day, .hotel-card, .notice, .snorkel-map, .cutlist{max-width:600px; margin-left:auto; margin-right:auto;}
+    .daynav{max-width:640px; margin:0 auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <svg class="karst" viewBox="0 0 500 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,90 L0,55 Q20,30 35,50 T70,45 Q85,20 100,48 T140,40 Q160,10 180,42 T220,38 Q245,15 265,44 T310,36 Q330,8 350,40 T400,34 Q420,15 440,42 T500,38 L500,90 Z" fill="#123F3B"/>
+    <path d="M0,90 L0,68 Q25,50 45,66 T90,60 Q110,42 130,64 T175,58 Q195,38 215,62 T260,54 Q280,36 300,60 T345,52 Q365,34 385,58 T430,50 Q450,36 470,56 T500,52 L500,90 Z" fill="#0B2E2C"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="eyebrow">Bangkok → Phuket → Krabi → Phi Phi → Bangkok</div>
+    <h1>The Andaman<br>Open-Jaw Loop <em>— Green Season</em></h1>
+    <p class="hero-sub">Departing July 19. Rebuilt for monsoon reality: fewer tourists, softer prices, morning-clear/afternoon-rain days — and Phi Phi worked back in before Maya Bay's yearly closure.</p>
+    <div class="hero-meta">
+      <div class="meta-chip"><span class="dot"></span>7 days</div>
+      <div class="meta-chip"><span class="dot"></span>Green season</div>
+      <div class="meta-chip"><span class="dot"></span>2 travelers</div>
+    </div>
+  </div>
+</div>
+
+<div class="daynav-wrap">
+  <div class="daynav" id="daynav">
+    <a href="#day1">DAY 1 · BKK</a>
+    <a href="#day2">DAY 2 · HKT</a>
+    <a href="#day3">DAY 3 · PATONG</a>
+    <a href="#day4">DAY 4 · PHANG NGA</a>
+    <a href="#day5">DAY 5 · PHI PHI</a>
+    <a href="#day6">DAY 6 · RAILAY</a>
+    <a href="#day7">DAY 7 · BKK</a>
+  </div>
+</div>
+
+<div class="notice">
+  <h3>🌧️ The green-season deal, honestly</h3>
+  <p>July is deep in the southwest monsoon on the Andaman side — Phuket, Krabi, and Phi Phi all see regular rain and choppier seas, and any given boat day is a genuine gamble. The upside is real too: this is also when the "overcrowded" cuts from the last draft stop applying — low season means thinner crowds and softer hotel rates, and mornings are reliably the clearest window before afternoon storms roll in.</p>
+  <p><b>The one hard deadline:</b> Maya Bay closes for its annual monsoon recovery from August 1 to September 30. Landing July 19 puts you right at the end of this year's access window — worth locking in Day 5 early and keeping a backup day loose if weather forces a reschedule.</p>
+  <div class="tag-row">
+    <span class="tag win">AM: usually clear</span>
+    <span class="tag rain">PM: showers likely</span>
+    <span class="tag win">Crowds: low</span>
+    <span class="tag rain">Seas: variable</span>
+  </div>
+</div>
+
+<div class="hotel-card">
+  <div class="hotel-badge">Night 1 · Book Early</div>
+  <h3>Hotel Muse Bangkok Langsuan</h3>
+  <div class="loc">Ploenchit / Langsuan — 4 min walk to BTS Chidlom</div>
+  <p>A boutique 5-star tucked on a quiet soi just off the chaos of Sukhumvit — genuinely central (Central Embassy and Central World are both walkable), with a rooftop speakeasy bar for the first-night decompression. Green-season rates bring it down meaningfully from peak pricing, which is the whole point of booking this far out — check current rates before locking it in.</p>
+  <div class="hotel-alt">
+    <div class="label">Better-value backup</div>
+    <p><b>Grande Centre Point Terminal 21</b> — directly connected to both Asok BTS and Sukhumvit MRT, plus the Terminal 21 mall downstairs. Consistently rated ~9.4 by travelers, full outdoor pool, no taxi hassle straight off the flight. The pick if "affordable" is doing more of the work than "boutique."</p>
+  </div>
+</div>
+
+<!-- DAY 1 -->
+<section class="day" id="day1">
+  <div class="day-head">
+    <div>
+      <div class="day-num">DAY 1</div>
+      <h2>Bangkok: Soft Landing</h2>
+    </div>
+    <div class="day-badges"></div>
+  </div>
+  <div class="monsoon-bar">
+    <div class="seg clear">AM arrive</div>
+    <div class="seg mostly">PM settle in</div>
+    <div class="seg clear">EVE clear</div>
+  </div>
+  <div class="day-body">
+    <div class="beat"><div class="beat-time">Mid–late PM</div><div class="beat-text">Land BKK, clear immigration, Grab/ARL into the city, <b>check into Hotel Muse Bangkok Langsuan.</b></div></div>
+    <div class="beat"><div class="beat-time">Evening</div><div class="beat-text">Chao Phraya River Ferry up toward Wat Arun as the light fades, then <span class="venue">Tyme Cafe and Rooftop Bar</span> for a sunset drink framed on the temple.</div></div>
+    <div class="beat"><div class="beat-time">Night</div><div class="beat-text">Early night, on purpose. No stadium, no Khaosan Road — the rest of Bangkok is waiting at the <b>end</b> of the trip, when you're not running on jetlag.</div></div>
+  </div>
+</section>
+
+<!-- DAY 2 -->
+<section class="day" id="day2">
+  <div class="day-head">
+    <div>
+      <div class="day-num">DAY 2</div>
+      <h2>Fly to Phuket, Cape Panwa</h2>
+    </div>
+    <div class="day-badges"></div>
+  </div>
+  <div class="monsoon-bar">
+    <div class="seg clear">AM flight</div>
+    <div class="seg clear">Midday clear</div>
+    <div class="seg mostly">PM showers poss.</div>
+  </div>
+  <div class="day-body">
+    <div class="beat"><div class="beat-time">Morning</div><div class="beat-text">Flight BKK → HKT (~1h20). Quick stop en route: <span class="venue">Ma Doo Bua Cafe</span> for the giant lotus-leaf photo.</div></div>
+    <div class="beat"><div class="beat-time">Afternoon</div><div class="beat-text">Check into <b>Panwaburi Resort, Cape Panwa</b> — your one contractually mandated aesthetic night. Glass kayaking through the resort's pools, then decompress properly.</div></div>
+    <div class="beat"><div class="beat-time">Evening</div><div class="beat-text">Resort dinner. One genuinely lazy afternoon, no negotiation.</div></div>
+  </div>
+</section>
+
+<!-- DAY 3 -->
+<section class="day" id="day3">
+  <div class="day-head">
+    <div>
+      <div class="day-num">DAY 3</div>
+      <h2>Patong: Mechanical + Vertical Adrenaline</h2>
+    </div>
+    <div class="day-badges"><span class="badge adrenaline">⚡ high energy</span></div>
+  </div>
+  <div class="monsoon-bar">
+    <div class="seg clear">AM clear</div>
+    <div class="seg clear">Midday clear</div>
+    <div class="seg mostly">PM showers poss.</div>
+  </div>
+  <div class="day-body">
+    <div class="beat"><div class="beat-time">Morning</div><div class="beat-text">Checkout, transfer to <b>Patong</b> — your base for the rest of the Phuket leg, walkable to Bangla Road.</div></div>
+    <div class="beat"><div class="beat-time">Late AM</div><div class="beat-text"><span class="venue">Patong Go-Kart Speedway</span> — 400cc super karts, ~110 km/h straights.</div></div>
+    <div class="beat"><div class="beat-time">Early PM</div><div class="beat-text"><span class="venue">Hanuman World</span> — the roller-zipline circuit through jungle canopy.</div></div>
+    <div class="beat"><div class="beat-time">Late PM</div><div class="beat-text">Recovery slot at <span class="venue">A Blanket and a Pillow Cafe</span> (cliffside beanbags), then <span class="venue">Promthep Cape</span> for sunset — best odds of a clear sky are earlier in the day, so build slack in if afternoon rain runs long.</div></div>
+    <div class="beat"><div class="beat-time">Evening</div><div class="beat-text">Dinner at <span class="venue">Kan's Haus Cafe and Bistro</span>, then Bangla Road — walkable from Patong, no taxi-syndicate pricing.</div></div>
+  </div>
+</section>
+
+<!-- DAY 4 -->
+<section class="day" id="day4">
+  <div class="day-head">
+    <div>
+      <div class="day-num">DAY 4</div>
+      <h2>The Phang Nga Traverse</h2>
+    </div>
+    <div class="day-badges"><span class="badge snorkel">🤿 light — caves, not reef</span></div>
+  </div>
+  <div class="monsoon-bar">
+    <div class="seg clear">Dawn clear</div>
+    <div class="seg clear">AM clear</div>
+    <div class="seg mostly">PM showers poss.</div>
+  </div>
+  <div class="day-body">
+    <div class="beat"><div class="beat-time">~4:00 AM</div><div class="beat-text">Private car pickup from Patong, north across the Sarasin Bridge into Phang Nga (~1.5–2 hrs).</div></div>
+    <div class="beat"><div class="beat-time">Sunrise</div><div class="beat-text"><span class="venue">Samet Nangshe Viewpoint</span> — pickup-truck ride up the hill, mist over the karsts, breakfast at the top.</div></div>
+    <div class="beat"><div class="beat-time">Late AM</div><div class="beat-text">Private <b>longtail boat</b> to <b>James Bond Island</b> — sea caves, hidden lagoons, canoeing into the karst fissures. Underwater time here is minimal — this is a caves-and-canoe stop, not a snorkel stop.</div></div>
+    <div class="beat"><div class="beat-time">Afternoon</div><div class="beat-text">Same car continues south to Krabi — forward progress on the loop, since Phang Nga sits almost exactly between Phuket and Krabi.</div></div>
+    <div class="beat"><div class="beat-time">Evening</div><div class="beat-text">Check into Ao Nang, dinner at the Muslim street market by <span class="venue">Masjid Al-Munuawarah</span> (Jame Food Centre) — Khao Mok Gai, Khua Kling, Pla Tod Kamin.</div></div>
+  </div>
+</section>
+
+<!-- DAY 5 -->
+<section class="day" id="day5">
+  <div class="day-head">
+    <div>
+      <div class="day-num">DAY 5</div>
+      <h2>Tiger Cave Dawn → Phi Phi Islands</h2>
+    </div>
+    <div class="day-badges">
+      <span class="badge snorkel">🤿 main snorkel day</span>
+      <span class="badge adrenaline">⚡ high energy</span>
+    </div>
+  </div>
+  <div class="monsoon-bar">
+    <div class="seg clear">Dawn clear</div>
+    <div class="seg clear">AM–Midday best window</div>
+    <div class="seg rain">PM crossing risk</div>
+  </div>
+  <div class="day-body">
+    <div class="beat"><div class="beat-time">~6:00 AM</div><div class="beat-text"><b>Tiger Cave Temple (Wat Tham Suea)</b> — 1,260 steep steps to the summit. Brutal in humidity; dawn beats both the heat and the crowds. 360° payoff at the top.</div></div>
+    <div class="beat"><div class="beat-time">~9:00 AM</div><div class="beat-text">Transfer to the pier for a <b>full-day speedboat trip to Phi Phi</b> — the swap-in for this draft, since Phi Phi was cut previously mainly on crowd grounds that don't really hold in green season.</div></div>
+    <div class="beat"><div class="beat-time">Day</div><div class="beat-text">Maya Bay (open through July 31 this season), <b>Pileh Lagoon</b> and the <b>Bamboo/Loh Samah reef stops</b> for the real snorkeling, Monkey Beach, and the island viewpoint.</div></div>
+    <div class="beat"><div class="beat-time">Evening</div><div class="beat-text">Back to Ao Nang, dinner. The bioluminescent plankton night swim is worth doing but only if legs and energy allow after a dawn hike plus a full boat day — see the swap note.</div></div>
+    <details class="swap">
+      <summary>If the crossing looks rough that morning</summary>
+      <p>Speedboats to Phi Phi cross more open water than the sheltered Krabi bay — if the forecast is bad, swap this whole block for the shorter, calmer <b>Krabi 4 Islands longtail tour</b> (Chicken Island, Tup/Mor sandbank, Poda Island), which stays close to Ao Nang and still delivers snorkeling, just with less drama in the crossing.</p>
+    </details>
+    <details class="swap">
+      <summary>Night swim — keep or cut?</summary>
+      <p>Given Tiger Cave (dawn) + Phi Phi (full day) is already three exertion blocks worth of trip, treat the <b>bioluminescent plankton swim</b> as optional rather than fixed. Genuinely magical if you've got the legs for it; a guilt-free skip if you don't.</p>
+    </details>
+  </div>
+</section>
+
+<!-- DAY 6 -->
+<section class="day" id="day6">
+  <div class="day-head">
+    <div>
+      <div class="day-num">DAY 6</div>
+      <h2>Railay Rock Climbing → Fly to Bangkok</h2>
+    </div>
+    <div class="day-badges"><span class="badge adrenaline">⚡ high energy</span></div>
+  </div>
+  <div class="monsoon-bar">
+    <div class="seg clear">AM clear</div>
+    <div class="seg clear">Midday clear</div>
+    <div class="seg mostly">PM flight, showers poss.</div>
+  </div>
+  <div class="day-body">
+    <div class="beat"><div class="beat-time">8:00 AM–1:00 PM</div><div class="beat-text">Short longtail to <b>Railay Beach</b> for a half-day intro/intermediate rock climbing course on the limestone karsts — top-roping, belaying, the Andaman below you.</div></div>
+    <div class="beat"><div class="beat-time">Afternoon</div><div class="beat-text">Back to Ao Nang, lunch, transfer to Krabi Airport. Flight KBV → BKK (~1h20).</div></div>
+    <div class="beat"><div class="beat-time">Evening</div><div class="beat-text">Land Bangkok, check into your final hotel. If timing allows, Chao Phraya ferry + Tyme Cafe sunset again; if you land late, a relaxed dinner. No big push — tomorrow's the sprint.</div></div>
+    <details class="swap">
+      <summary>Prefer mud to rock?</summary>
+      <p>Swap the climbing block for an <b>ATV Jungle Traverse</b> near Khao Thong — both work, pick based on which kind of adrenaline you actually want.</p>
+    </details>
+  </div>
+</section>
+
+<!-- DAY 7 -->
+<section class="day" id="day7">
+  <div class="day-head">
+    <div>
+      <div class="day-num">DAY 7</div>
+      <h2>Bangkok: The Full-Send Finale</h2>
+    </div>
+    <div class="day-badges"><span class="badge adrenaline">⚡ high energy</span></div>
+  </div>
+  <div class="monsoon-bar">
+    <div class="seg clear">AM clear</div>
+    <div class="seg mostly">PM showers poss.</div>
+    <div class="seg clear">EVE clear</div>
+  </div>
+  <div class="day-body">
+    <div class="beat"><div class="beat-time">Morning</div><div class="beat-text">Private Muay Thai session at <span class="venue">FA Group</span> (Chatuchak/Lat Phrao) — 90 minutes of pad work, bag conditioning, and clinch instruction.</div></div>
+    <div class="beat"><div class="beat-time">Midday</div><div class="beat-text">Chao Phraya ferry to <span class="venue">IconSiam</span>, lunch at <span class="venue">SookSiam</span> — the indoor floating market, useful cover if the afternoon rain shows up early.</div></div>
+    <div class="beat"><div class="beat-time">Afternoon</div><div class="beat-text">Pick <b>one</b> shopping hub — Platinum Fashion Mall or MBK Center — not both.</div></div>
+    <div class="beat"><div class="beat-time">Sunset</div><div class="beat-text"><span class="venue">King Power Mahanakhon SkyWalk</span> — 314m glass floor, timed for golden hour.</div></div>
+    <div class="beat"><div class="beat-time">Evening</div><div class="beat-text">Dinner at <span class="venue">Belga Rooftop</span> (Sofitel Sukhumvit) — short hop from Mahanakhon.</div></div>
+    <div class="beat"><div class="beat-time">Late</div><div class="beat-text"><span class="venue">Jodd Fairs Ratchada</span> for Leng Saap and one last night market lap. Depart for Doha late night / early morning.</div></div>
+    <details class="swap">
+      <summary>Not into getting hit / want a fight card instead?</summary>
+      <p>Swap the morning for <b>Wat Paknam Phasi Charoen</b> — the giant green glass stupa, nearly crowd-free. For the evening, <b>Rajadamnern Stadium</b> runs fights every night of the week if training didn't scratch the itch — or trade the hour for <b>Lebua Sky Bar</b> instead.</p>
+    </details>
+  </div>
+</section>
+
+<!-- SNORKEL MAP -->
+<div class="snorkel-map">
+  <div class="eyebrow">Underwater, mapped</div>
+  <h2>Where you're actually in the water</h2>
+  <div class="sm-row">
+    <div class="sm-level low">DAY 4</div>
+    <div class="sm-text"><b>James Bond Island —</b> canoeing into sea caves and lagoons. Genuinely beautiful, but this is a caves-and-canoe stop, not a mask-and-fins stop.</div>
+  </div>
+  <div class="sm-row">
+    <div class="sm-level high">DAY 5</div>
+    <div class="sm-text"><b>Phi Phi — the real snorkel day.</b> Pileh Lagoon's impossibly clear water, Bamboo/Loh Samah reef stops, and Maya Bay itself. This is the day to bring an underwater phone pouch.</div>
+  </div>
+  <div class="sm-row">
+    <div class="sm-level low">SWAP</div>
+    <div class="sm-text"><b>Krabi 4 Islands (fallback) —</b> Chicken Island and Poda Island both have reef snorkeling too, calmer and closer if Day 5's crossing gets swapped out for weather.</div>
+  </div>
+</div>
+
+<!-- CUT LIST -->
+<div class="cutlist">
+  <div class="section-label"><h2 style="font-size:20px;">Reassessed, still cut</h2><div class="line"></div></div>
+  <p class="intro">Green season changes the crowd math, but not everything. Here's what stayed out and the current reasoning.</p>
+  <div class="cut-item"><b>Similan Islands</b>Closed entirely mid-May through mid-October for monsoon/conservation, regardless of crowd levels. Off the table for a July trip no matter what.</div>
+  <div class="cut-item"><b>Coral Island (Koh Hey)</b>Phi Phi being back in supersedes it — no reason to add a third, weaker boat-snorkel stop when Phi Phi already covers that ground better.</div>
+  <div class="cut-item"><b>Elephant Sanctuary, Tiger Kingdom, animal shows</b>Unchanged — ethical grounds, not seasonal ones.</div>
+  <div class="cut-item"><b>Skydiving</b>Still off the list per the original brief.</div>
+</div>
+
+<footer>Andaman Open-Jaw Loop · Green Season Edition · July 19 departure</footer>
+
+<script>
+  const links = document.querySelectorAll('#daynav a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  const setActive = () => {
+    let idx = 0;
+    const y = window.scrollY + 140;
+    sections.forEach((s, i) => { if (s && s.offsetTop <= y) idx = i; });
+    links.forEach((l, i) => l.classList.toggle('active', i === idx));
+  };
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+</script>
+
+</body>
+</html>
