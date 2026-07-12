@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Andaman Open-Jaw Loop — Green Season Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -42,7 +42,7 @@
 
   /* ===== HERO ===== */
   .hero{position:relative; padding:64px 22px 46px; z-index:2;}
-  .hero-card{background:rgba(255,253,246,0.88); backdrop-filter:blur(6px); border-radius:24px; padding:26px 22px; box-shadow:0 20px 50px rgba(11,61,62,0.18);}
+  .hero-card{background:rgba(255,253,246,0.93); backdrop-filter:blur(8px); border-radius:24px; padding:26px 22px; box-shadow:0 20px 50px rgba(11,61,62,0.25);}
   .hero h1{font-size:34px; line-height:1.05; font-weight:700; color:var(--ink);}
   .hero h1 em{color:var(--coral); font-style:italic; font-weight:500;}
   .hero-sub{margin-top:10px; font-size:14.5px; line-height:1.5; color:var(--ink-soft); max-width:46ch;}
@@ -137,61 +137,22 @@
     .day, .stay-card, .notice, .snorkel-map, .cutlist{max-width:780px;}
     .hero{padding-top:88px;}
   }
+
+  .bg-photo{position:fixed; inset:-5% -5% -5% -5%; background-size:cover; background-position:center 30%; transform:translateY(calc(var(--scroll-y) * -0.06px)) scale(1.05);}
+  .bg-photo-overlay{position:fixed; inset:0; background:linear-gradient(180deg, rgba(63,193,233,0.55) 0%, rgba(127,216,224,0.4) 30%, rgba(255,221,122,0.35) 100%);}
+  .day-photo{position:relative; height:150px; background-size:cover; background-position:center; overflow:hidden;}
+  .day-photo-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,61,62,0.10) 0%, rgba(11,61,62,0.82) 100%);}
+  .day-photo-text{position:absolute; left:18px; bottom:14px; z-index:2; right:100px;}
+  .day-photo-text .day-num{color:#FFE9B8; font-family:'Space Mono',monospace; font-size:12px; font-weight:700; text-shadow:0 2px 6px rgba(0,0,0,0.5);}
+  .day-photo-text h2{font-size:21px; color:#fff; margin-top:4px; font-weight:700; line-height:1.15; text-shadow:0 2px 10px rgba(0,0,0,0.55);}
+  .day-badges-photo{position:absolute; top:14px; right:14px; z-index:2; display:flex; flex-direction:column; gap:6px; align-items:flex-end;}
 </style>
 </head>
 <body>
 
 <div class="bg-scene" aria-hidden="true">
-  <svg class="layer-sky" viewBox="0 0 400 900" preserveAspectRatio="none" style="height:100vh; width:100vw;">
-    <defs><linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3FC1E9"/><stop offset="55%" stop-color="#7FD8E0"/><stop offset="100%" stop-color="#FFDD7A"/>
-    </linearGradient></defs>
-    <rect width="400" height="900" fill="url(#skyGrad)"/>
-  </svg>
-  <svg class="layer-sun" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet" style="height:200px; width:100vw; max-width:900px; right:0; left:auto;">
-    <circle cx="320" cy="70" r="46" fill="#FFCE3E" opacity="0.9"/>
-    <circle cx="320" cy="70" r="80" fill="#FFCE3E" opacity="0.25"/>
-  </svg>
-  <svg class="layer-clouds" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid meet" style="height:150px; width:100vw; max-width:900px;">
-    <ellipse cx="60" cy="40" rx="38" ry="14" fill="#fff" opacity="0.8"/>
-    <ellipse cx="90" cy="34" rx="28" ry="12" fill="#fff" opacity="0.8"/>
-    <ellipse cx="250" cy="60" rx="30" ry="11" fill="#fff" opacity="0.7"/>
-    <ellipse cx="275" cy="55" rx="22" ry="9" fill="#fff" opacity="0.7"/>
-  </svg>
-  <svg class="layer-mtn-far" viewBox="0 0 400 160" preserveAspectRatio="none" style="height:160px; width:100vw;">
-    <path d="M0,160 L0,90 Q40,50 80,85 T160,70 Q200,30 240,75 T320,60 Q360,35 400,80 L400,160 Z" fill="#5FCB8C" opacity="0.85"/>
-  </svg>
-  <svg class="layer-mtn-near" viewBox="0 0 400 170" preserveAspectRatio="none" style="height:170px; width:100vw;">
-    <path d="M0,170 L0,110 Q30,70 60,100 T130,90 Q170,45 210,95 T290,80 Q330,50 370,95 T400,90 L400,170 Z" fill="#1E9E62"/>
-    <path d="M0,170 L0,130 Q35,105 70,125 T150,118 Q190,90 230,120 T310,112 Q350,92 400,118 L400,170 Z" fill="#0E7A47"/>
-  </svg>
-  <svg class="layer-ocean" viewBox="0 0 400 500" preserveAspectRatio="none" style="height:500px; width:100vw;">
-    <defs><linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#4FD3E8"/><stop offset="100%" stop-color="#0083B0"/>
-    </linearGradient></defs>
-    <rect width="400" height="500" fill="url(#oceanGrad)"/>
-  </svg>
-  <svg class="layer-waves" viewBox="0 0 400 60" preserveAspectRatio="none" style="height:60px; width:100vw;">
-    <path d="M0,20 Q20,8 40,20 T80,20 T120,20 T160,20 T200,20 T240,20 T280,20 T320,20 T360,20 T400,20 L400,60 L0,60 Z" fill="#fff" opacity="0.35"/>
-    <path d="M0,34 Q20,24 40,34 T80,34 T120,34 T160,34 T200,34 T240,34 T280,34 T320,34 T360,34 T400,34 L400,60 L0,60 Z" fill="#fff" opacity="0.22"/>
-  </svg>
-  <svg class="layer-palm-l" viewBox="0 0 200 300" style="height:36vh; left:-20px; width:220px;">
-    <path d="M40,300 L48,140" stroke="#0E7A47" stroke-width="10" fill="none" stroke-linecap="round"/>
-    <g stroke="#1E9E62" stroke-width="9" fill="none" stroke-linecap="round">
-      <path d="M48,140 Q10,110 -10,60"/><path d="M48,140 Q0,130 -20,105"/><path d="M48,140 Q90,100 120,50"/>
-      <path d="M48,140 Q100,130 130,100"/><path d="M48,140 Q40,90 60,40"/>
-    </g>
-  </svg>
-  <svg class="layer-palm-r" viewBox="0 0 200 300" style="height:32vh; right:-30px; left:auto; width:220px;">
-    <path d="M160,300 L150,150" stroke="#0E7A47" stroke-width="9" fill="none" stroke-linecap="round"/>
-    <g stroke="#1E9E62" stroke-width="8" fill="none" stroke-linecap="round">
-      <path d="M150,150 Q190,125 210,80"/><path d="M150,150 Q200,145 225,120"/><path d="M150,150 Q110,115 85,65"/>
-      <path d="M150,150 Q100,140 70,115"/>
-    </g>
-  </svg>
-  <svg class="layer-sand" viewBox="0 0 400 100" preserveAspectRatio="none" style="height:14vh; width:100vw;">
-    <path d="M0,100 L0,30 Q100,0 200,25 T400,20 L400,100 Z" fill="#FFE9B8"/>
-  </svg>
+  <div class="bg-photo" style="background-image:url('https://images.pexels.com/photos/33797713/pexels-photo-33797713.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+  <div class="bg-photo-overlay"></div>
 </div>
 
 <div class="hero">
@@ -238,14 +199,7 @@
 
 <!-- DAY 1 -->
 <section class="day" id="day1">
-  <div class="day-accent accent-gold"></div>
-  <div class="day-head">
-    <svg class="motif theme-gold" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="30" cy="30" r="12"/><path d="M30 4v8M30 48v8M4 30h8M48 30h8M11 11l6 6M43 43l6 6M11 49l6-6M43 17l6-6"/>
-    </svg>
-    <div><div class="day-num">DAY 1</div><h2>Bangkok: Redeye Landing</h2></div>
-    <div class="day-badges"></div>
-  </div>
+  <div class="day-photo" style="background-image:url('https://images.pexels.com/photos/31026307/pexels-photo-31026307.jpeg?auto=compress&cs=tinysrgb&w=1200');"><div class="day-photo-overlay"></div><div class="day-photo-text"><div class="day-num">DAY 1</div><h2>Bangkok: Redeye Landing</h2></div></div>
   <div class="monsoon-bar">
     <div class="seg clear">Noon land</div>
     <div class="seg clear">PM rest</div>
@@ -261,14 +215,7 @@
 
 <!-- DAY 2 -->
 <section class="day" id="day2">
-  <div class="day-accent accent-ocean"></div>
-  <div class="day-head">
-    <svg class="motif theme-jungle" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M30 56 L32 26"/><path d="M32 26 Q14 18 8 4"/><path d="M32 26 Q10 30 4 22"/><path d="M32 26 Q50 16 56 4"/><path d="M32 26 Q52 28 58 22"/>
-    </svg>
-    <div><div class="day-num">DAY 2</div><h2>Fly to Phuket, Cape Panwa</h2></div>
-    <div class="day-badges"></div>
-  </div>
+  <div class="day-photo" style="background-image:url('https://images.pexels.com/photos/32647730/pexels-photo-32647730.jpeg?auto=compress&cs=tinysrgb&w=1200');"><div class="day-photo-overlay"></div><div class="day-photo-text"><div class="day-num">DAY 2</div><h2>Fly to Phuket, Cape Panwa</h2></div></div>
   <div class="monsoon-bar">
     <div class="seg clear">AM flight</div>
     <div class="seg clear">Midday clear</div>
@@ -283,14 +230,7 @@
 
 <!-- DAY 3 -->
 <section class="day" id="day3">
-  <div class="day-accent accent-coral"></div>
-  <div class="day-head">
-    <svg class="motif theme-coral" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M30 56 V34"/><path d="M30 34 Q18 30 16 16"/><path d="M30 34 Q42 30 44 16"/><path d="M30 22 Q26 12 30 4"/><path d="M30 22 Q34 12 30 4"/>
-    </svg>
-    <div><div class="day-num">DAY 3</div><h2>Old Town Dawn, Patong Adrenaline</h2></div>
-    <div class="day-badges"><span class="badge adrenaline">⚡ high energy</span></div>
-  </div>
+  <div class="day-photo" style="background-image:url('https://images.pexels.com/photos/33797713/pexels-photo-33797713.jpeg?auto=compress&cs=tinysrgb&w=1200');"><div class="day-photo-overlay"></div><div class="day-photo-text"><div class="day-num">DAY 3</div><h2>Old Town Dawn, Patong Adrenaline</h2></div><div class="day-badges-photo"><span class="badge adrenaline">⚡ high energy</span></div></div>
   <div class="monsoon-bar">
     <div class="seg clear">Dawn clear</div>
     <div class="seg clear">Midday clear</div>
@@ -308,14 +248,7 @@
 
 <!-- DAY 4 -->
 <section class="day" id="day4">
-  <div class="day-accent accent-jungle"></div>
-  <div class="day-head">
-    <svg class="motif theme-jungle" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-      <path d="M4 46 L20 20 L28 32 L38 12 L56 46 Z"/><circle cx="46" cy="14" r="4"/>
-    </svg>
-    <div><div class="day-num">DAY 4</div><h2>The Phang Nga Traverse</h2></div>
-    <div class="day-badges"><span class="badge snorkel">🤿 light — caves, not reef</span></div>
-  </div>
+  <div class="day-photo" style="background-image:url('https://images.pexels.com/photos/4024726/pexels-photo-4024726.jpeg?auto=compress&cs=tinysrgb&w=1200');"><div class="day-photo-overlay"></div><div class="day-photo-text"><div class="day-num">DAY 4</div><h2>The Phang Nga Traverse</h2></div><div class="day-badges-photo"><span class="badge snorkel">🤿 light — caves, not reef</span></div></div>
   <div class="monsoon-bar">
     <div class="seg clear">Dawn clear</div>
     <div class="seg clear">AM clear</div>
@@ -332,17 +265,7 @@
 
 <!-- DAY 5 -->
 <section class="day" id="day5">
-  <div class="day-accent accent-ocean"></div>
-  <div class="day-head">
-    <svg class="motif theme-ocean" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-      <path d="M4 22 Q12 14 20 22 T36 22 T52 22"/><path d="M4 34 Q12 26 20 34 T36 34 T52 34"/><path d="M4 46 Q12 38 20 46 T36 46 T52 46"/>
-    </svg>
-    <div><div class="day-num">DAY 5</div><h2>Tiger Cave Dawn → Phi Phi Islands</h2></div>
-    <div class="day-badges">
-      <span class="badge snorkel">🤿 main snorkel day</span>
-      <span class="badge adrenaline">⚡ high energy</span>
-    </div>
-  </div>
+  <div class="day-photo" style="background-image:url('https://images.pexels.com/photos/33797713/pexels-photo-33797713.jpeg?auto=compress&cs=tinysrgb&w=1200');"><div class="day-photo-overlay"></div><div class="day-photo-text"><div class="day-num">DAY 5</div><h2>Tiger Cave Dawn → Phi Phi Islands</h2></div><div class="day-badges-photo"><span class="badge snorkel">🤿 main snorkel day</span><span class="badge adrenaline">⚡ high energy</span></div></div>
   <div class="monsoon-bar">
     <div class="seg clear">Dawn clear</div>
     <div class="seg clear">AM–Midday best</div>
@@ -361,14 +284,7 @@
 
 <!-- DAY 6 -->
 <section class="day" id="day6">
-  <div class="day-accent accent-jungle"></div>
-  <div class="day-head">
-    <svg class="motif theme-jungle" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-      <path d="M4 46 L20 20 L28 32 L38 12 L56 46 Z"/><circle cx="46" cy="14" r="4"/>
-    </svg>
-    <div><div class="day-num">DAY 6</div><h2>Ao Nang ATV → Fly to Bangkok</h2></div>
-    <div class="day-badges"><span class="badge adrenaline">⚡ high energy</span></div>
-  </div>
+  <div class="day-photo" style="background-image:url('https://images.pexels.com/photos/4024726/pexels-photo-4024726.jpeg?auto=compress&cs=tinysrgb&w=1200');"><div class="day-photo-overlay"></div><div class="day-photo-text"><div class="day-num">DAY 6</div><h2>Ao Nang ATV → Fly to Bangkok</h2></div><div class="day-badges-photo"><span class="badge adrenaline">⚡ high energy</span></div></div>
   <div class="monsoon-bar">
     <div class="seg clear">AM clear</div>
     <div class="seg clear">Midday clear</div>
@@ -387,14 +303,7 @@
 
 <!-- DAY 7 -->
 <section class="day" id="day7">
-  <div class="day-accent accent-gold"></div>
-  <div class="day-head">
-    <svg class="motif theme-gold" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="30" cy="30" r="12"/><path d="M30 4v8M30 48v8M4 30h8M48 30h8M11 11l6 6M43 43l6 6M11 49l6-6M43 17l6-6"/>
-    </svg>
-    <div><div class="day-num">DAY 7</div><h2>Bangkok: The Full-Send Finale</h2></div>
-    <div class="day-badges"><span class="badge adrenaline">⚡ high energy</span></div>
-  </div>
+  <div class="day-photo" style="background-image:url('https://images.pexels.com/photos/31026307/pexels-photo-31026307.jpeg?auto=compress&cs=tinysrgb&w=1200');"><div class="day-photo-overlay"></div><div class="day-photo-text"><div class="day-num">DAY 7</div><h2>Bangkok: The Full-Send Finale</h2></div><div class="day-badges-photo"><span class="badge adrenaline">⚡ high energy</span></div></div>
   <div class="monsoon-bar">
     <div class="seg clear">AM clear</div>
     <div class="seg mostly">PM showers poss.</div>
